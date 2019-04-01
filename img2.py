@@ -86,24 +86,21 @@ def main():
 		#rearranged for further convenience
 		construct = command+" "+input_list+" -o "+output_pdf_name+" -s "+dpi_arg 
 		
-		#outputs to:
-		#	1. Clipboard
-		#	2. CLI
-		#	3. FILE
+		#output:
 		
-		#File
+		#console
+		keyboard.write(construct)#, delay=0.01)
+		
+		#file
 		fname = input_list_hash+".txt"
 		f = open(fname, "w+")
 		f.write(construct)
 		f.close()
 		
-		#CLI
-		keyboard.write(construct)#, delay=0.01)
+		#clipboard [disabled]
+		#pyperclip.copy(construct)
 		
-		#clipboard
-		pyperclip.copy(construct)
-		
-		#disabled: execute
+		#execute [disabled]
 		#exec(construct)
 		
 		# print
