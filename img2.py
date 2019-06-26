@@ -36,8 +36,8 @@ def showHelp():
 def path_process(p):
 	#OOP copy
 	buf = Path(p)
-	if(buf.name==""):
-		buf.with_name("*")
+	if(os.path.isdir(buf)):
+		buf = buf.joinpath("*")
 	
 	return str(buf)
 
