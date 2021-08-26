@@ -1,2 +1,2 @@
 pyperclip==1.7.0
-keyboard=0.13.3
+keyboard==0.13.3
