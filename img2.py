@@ -22,7 +22,7 @@ DO = {
 }
 assert(1 in DO.values())
 
-def VERSION(): return "1.2.0"
+def VERSION(): return "1.2.1"
 def PROGRAM_NAME(): return "img2"
 
 DELIMITER = " " #WHITESPACE
@@ -59,6 +59,29 @@ def list_all_do():
 		print(f"\tDO - \t{i}: {k}")
 	print("\r\n")
 
+# Rigorous way to bypass Windows specifics of operation
+def gen_command():
+	# .strip() for preemptive avoidance of bugs further down
+	s = getModulePath("img2pdf").strip()
+	ret = s
+	s_list = s.split(" ")
+	s_list_first = s_list[0]
+	
+	# is syntax like 'python3 blabla'?
+	if(("python" in s_list_first.lower()) and (len(s_list) > 1)):
+		s_potentially_quotationmarks = s_list[1][0] + s_list[-1][-1]
+		#print(f"DEBUG: s_potentially_quotationmarks: {s_potentially_quotationmarks}")
+		# are quotation marks not present?
+		if(s_potentially_quotationmarks != '""'):
+			# There are 2 possible approaches,
+			# 1. Slice first part out, add quotation marks, put everything back in
+			# 2. Recompile the split with for-loop
+			# I think both are equally valid, since we splice by ' ' and not '\w'
+			ret = s_list_first+' "'+s[len(s_list_first)+1:]+'"'
+			
+		
+	return ret
+	
 
 def main():
 	argc = len(sys.argv) - 1
@@ -84,7 +107,7 @@ def main():
 		list_all_do()
 		# begin building pieces
 		
-		command = getModulePath("img2pdf")
+		command = gen_command()
 		#help = eval("img2pdf -h")
 		dpi_arg = dpi_pure+"dpix"+dpi_pure+"dpi"
 		
@@ -106,7 +129,7 @@ def main():
 		
 		# put pieces together
 		#rearranged for further convenience
-		construct = '"'+command+'" '+input_list+" -o "+output_pdf_name+" -s "+dpi_arg 
+		construct = command+" "+input_list+" -o "+output_pdf_name+" -s "+dpi_arg 
 		
 		#output:
 		
