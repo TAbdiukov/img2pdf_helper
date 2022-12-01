@@ -2,18 +2,31 @@ import os, sys, string, glob
 import zlib
 from pathlib import Path #PY3
 
-import keyboard
-import pyperclip
+try:
+	import keyboard
+	import pyperclip
+	
+	# not-really-an-import but ok
+	import img2pdf
+except ImportError:
+	print("="*25)
+	print("pip install pyperclip keyboard img2pdf")
+	print("="*25)
 
-# not-really-an-import but ok
-import img2pdf
+# Constants
+DO = {
+	"FILE": 0,
+	"PREENTER": 1,
+	"CLIPBOARD": 0,
+	"EXEC": 0,
+}
+assert(1 in DO.values())
 
+def VERSION(): return "1.2.0"
 def PROGRAM_NAME(): return "img2"
+
 DELIMITER = " " #WHITESPACE
 C34 = chr(34)
-
-def example():
-	return "img2pdf -o *n*.pdf -s *hor dpi*dpix*ver dpi*dpi *list*"
 
 def toHexCustom(dec): 
 	return str(hex(dec).split('x')[-1])	
@@ -29,7 +42,7 @@ def kwikHash(txt):
 	return toHexCustom(zlib.adler32(txt.encode('utf-8')))
 	
 def showHelp():
-	print("img2 - img2pdf's wrapper on PY3 to help save to PDF losslessly")
+	print(PROGRAM_NAME()+" v"+VERSION()+" - img2pdf's wrapper on PY3 to help save to PDF losslessly")
 	print("USAGE:")
 	print("python "+PROGRAM_NAME() +".py <Path> <DPI>")
 
@@ -40,26 +53,35 @@ def path_process(p):
 		buf = buf.joinpath("*")
 	
 	return str(buf)
+	
+def list_all_do():
+	for i, k in DO.items():
+		print(f"\tDO - \t{i}: {k}")
+	print("\r\n")
+
 
 def main():
 	argc = len(sys.argv) - 1
-	if (argc == 0): # default
-		showHelp()
-	elif (argc == 2):
+	if (argc == 2):
 		#input
 		path = Path(str(sys.argv[1]))
 		dpi_pure = str(sys.argv[2])
 	
 		# error chk
-		dpi_float = float(dpi_pure)
-		if(dpi_float <= 0):
+		try:
+			dpi_float = float(dpi_pure)
+			assert(dpi_float > 0)
+		except:
 			raise ValueError("Invalid DPI")
 					
-		#init			
+		#init
 		processed = path_process(path) # any
 		listing = glob.glob(processed, recursive=True)
 		construct = ""
 		
+		# Informational
+		print("Mode of operation,")
+		list_all_do()
 		# begin building pieces
 		
 		command = getModulePath("img2pdf")
@@ -84,28 +106,34 @@ def main():
 		
 		# put pieces together
 		#rearranged for further convenience
-		construct = command+" "+input_list+" -o "+output_pdf_name+" -s "+dpi_arg 
+		construct = '"'+command+'" '+input_list+" -o "+output_pdf_name+" -s "+dpi_arg 
 		
 		#output:
 		
 		#console
-		keyboard.write(construct)#, delay=0.01)
+		if(DO["PREENTER"]):
+			keyboard.write(construct)#, delay=0.01)
 		
 		#file
-		fname = input_list_hash+".txt"
-		f = open(fname, "w+")
-		f.write(construct)
-		f.close()
+		if(DO["FILE"]):
+			fname = input_list_hash+".txt"
+			f = open(fname, "w+")
+			f.write(construct)
+			f.close()
 		
-		#clipboard [disabled]
-		#pyperclip.copy(construct)
+		if(DO["CLIPBOARD"]):
+			clipboard [disabled]
+			pyperclip.copy(construct)
 		
-		#execute [disabled]
-		#exec(construct)
+		if(DO["EXEC"]):
+			execute [disabled]
+			exec(construct)
 		
 		# print
 		print("done ("+str(len(construct))+")")
-		print(fname)
+		if(DO["FILE"]): print(fname)
+	else:
+		showHelp()
 
 if __name__ == '__main__':
 	main()
