@@ -145,11 +145,11 @@ def main():
 			f.close()
 		
 		if(DO["CLIPBOARD"]):
-			clipboard [disabled]
+			#clipboard [disabled]
 			pyperclip.copy(construct)
 		
 		if(DO["EXEC"]):
-			execute [disabled]
+			# execute [disabled]
 			exec(construct)
 		
 		# print
