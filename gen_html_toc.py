@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import os, sys, string, glob, zlib
 from pathlib import Path, PurePath #PY3
 import re

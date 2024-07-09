@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import os, sys, string, glob
 import zlib
 from pathlib import Path #PY3
