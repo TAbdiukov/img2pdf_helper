@@ -1,5 +1,7 @@
 #!/usr/bin/env python
+# -*- coding: utf8 -*-
 
+# This is Python 3
 import os, sys, string, glob, zlib
 from pathlib import Path, PurePath #PY3
 import re
