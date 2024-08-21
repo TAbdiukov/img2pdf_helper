@@ -54,3 +54,6 @@ The script will output the **pretty-much-ready-to-use** command; to
 * execution [disabled]
 
 The output may be adjusted in the `helper` script depending on the user's needs.
+
+----------------------------------
+**Tim Abdiukov**
