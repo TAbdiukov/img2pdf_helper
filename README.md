@@ -1,5 +1,5 @@
 ﻿# img2pdf_helper
-Simplifies [**img2pdf**](https://gitlab.mister-muffin.de/josch/img2pdf/) arguments work for you
+Simplifies [**img2pdf**](https://gitlab.mister-muffin.de/josch/img2pdf/) configuration and usage.
 
 ## Additional scripts
 * "gen_html_toc.py" - Generate HTML-based Table of Contents (ToC) of the given files with embedded links. Useful to subsequent generation of merged PDF with an 'aftermarket' ToC in Adobe Acrobat, as ToC generation is not natively supported in Adobe Acrobat. Also, it may be useful for data scrapping.
