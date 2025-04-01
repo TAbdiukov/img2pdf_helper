@@ -1,5 +1,5 @@
 ﻿# img2pdf_helper
-Simplifies [**img2pdf**](https://gitlab.mister-muffin.de/josch/img2pdf/) configuration and usage.
+Simplify [**img2pdf**](https://gitlab.mister-muffin.de/josch/img2pdf/) configuration and usage.
 
 ## Additional scripts
 * "gen_html_toc.py" - Generate HTML-based Table of Contents (ToC) of the given files with embedded links. Useful to subsequent generation of merged PDF with an 'aftermarket' ToC in Adobe Acrobat, as ToC generation is not natively supported in Adobe Acrobat. Also, it may be useful for data scrapping.
@@ -54,6 +54,13 @@ The script will output the **pretty-much-ready-to-use** command; to
 * execution [disabled]
 
 The output may be adjusted in the `helper` script depending on the user's needs.
+
+## See also
+*My other small but snappy Python tools and automation,*
+
+* [github-stargazers)](https://github.com/TAbdiukov/github-stargazers) – Python 3.13 – Github Stargazer Scraper.
+* **<ins>img2pdf_helper</ins>** – Simplify img2pdf configuration and usage.
+* [file-watchdog](https://github.com/TAbdiukov/file-watchdog) – Python 3.14 – file system Watchdog wrapper.
 
 ----------------------------------
 **Tim Abdiukov**
