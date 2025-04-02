@@ -58,7 +58,7 @@ The output may be adjusted in the `helper` script depending on the user's needs.
 ## See also
 *My other small but snappy Python tools and automation,*
 
-* [github-stargazers)](https://github.com/TAbdiukov/github-stargazers) – Python 3.13 – Github Stargazer Scraper.
+* [github-stargazers](https://github.com/TAbdiukov/github-stargazers) – Python 3.13 – Github Stargazer Scraper.
 * **<ins>img2pdf_helper</ins>** – Simplify img2pdf configuration and usage.
 * [file-watchdog](https://github.com/TAbdiukov/file-watchdog) – Python 3.14 – file system Watchdog wrapper.
 
