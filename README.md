@@ -1,4 +1,10 @@
 ﻿# img2pdf_helper
+
+[![GitHub](https://img.shields.io/badge/GitHub-TAbdiukov/img2pdf_helper-black?logo=github)](https://github.com/TAbdiukov/img2pdf_helper)
+![License](https://img.shields.io/github/license/TAbdiukov/img2pdf_helper)
+
+[![buymeacoffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/tabdiukov)
+
 Simplify [**img2pdf**](https://gitlab.mister-muffin.de/josch/img2pdf/) configuration and usage.
 
 ## Additional scripts
